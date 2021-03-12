@@ -2,12 +2,13 @@ import React,{useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faPhone,faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faPhone } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+
 
 const drawerWidth = 240;
 
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
       marginRight: theme.spacing(2),
+
     },
     hide: {
       display: 'none',
@@ -87,16 +89,16 @@ const Navbar = () => {
     return (
         <div>
 
-        <nav className='flex flex-row bg-white justify-between p-3 antialiased'>
-            <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700'>
-                <FontAwesomeIcon icon={faBars}
+        <nav className='flex flex-row fixed top-0 w-screen bg-white justify-between p-3 antialiased md:bg-transparent'>
+            <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700 md:text-white'>
+                <DehazeIcon 
                     onClick={handleDrawerOpen}
                     className={clsx(classes.menuButton, open && classes.hide)}/>
                     <span >FlyBuy</span>
             </div>
 
 
-            <div className='hidden md:block md:ml-auto md:px-2 lg:px-4'>
+            {/* <div className='hidden md:block md:ml-auto md:px-2 lg:px-4'>
             
             <input
                     className="border border-gray-300 bg-white h-10 pl-2 pr-8 w-auto rounded-lg text-sm focus:outline-none"
@@ -104,18 +106,18 @@ const Navbar = () => {
                      <button type="submit" className="relative top-0 right-6">
                     <FontAwesomeIcon icon={faSearch} style={{color:'gray'}}/>
                 </button>
-            </div>
+            </div> */}
 
 
-            <div className='hidden lg:flex lg:flex-row lg:mr-2'>
-                    <div className='text-sm font-semibold bg-transparent rounded-lg text-gray-700 dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+            <div className='hidden lg:flex lg:flex-row lg:mr-2 lg:ml-auto'>
+                    <div className='text-sm font-semibold bg-transparent rounded-lg text-gray-700 md:text-white dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>Blog</a>
                     </div>
-                    <div className='text-sm font-semibold text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>About</a>
                     </div>
                    
-                    <div className='text-sm font-semibold text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>Premium</a>
                     </div>
                    
@@ -124,11 +126,11 @@ const Navbar = () => {
 
 
             <div className='flex flex-row'>
-            <div className='text-sm font-semibold bg-gray-200 md:bg-transparent text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
+            <div className='text-sm font-semibold bg-gray-200 md:bg-transparent text-gray-700 md:text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
                         <a href='#!'>Contact</a>{'  '}
                         <FontAwesomeIcon icon={faPhone}/>
                     </div>
-                    <div className='text-sm font-semibold bg-gray-200 ml-2 md:bg-transparent text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='text-sm font-semibold bg-gray-200 ml-2 md:bg-transparent text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>Cart</a>{'  '}
                         <FontAwesomeIcon icon={faShoppingCart}/>
                     </div>
@@ -155,16 +157,16 @@ const Navbar = () => {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <div className='bg-white py-2 px-4 hover:bg-gray-200'>
+        <div className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
           <a href='#!'>About</a>
         </div>
-        <div className='bg-white py-2 px-4 hover:bg-gray-200'>
+        <div className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
           <a href='#!'>Premium</a>
         </div>
-        <div className='bg-white py-2 px-4 hover:bg-gray-200'>
+        <div className='bg-white text-gray-600 py-2 px-4 hover:bg-gray-200'>
           <a href='#!'>Blog</a>
         </div>
-        <div className='bg-white py-2 px-4 hover:bg-gray-200'>
+        <div className='bg-white text-gray-600 py-2 px-4 hover:bg-gray-200'>
           <a href='#!'>DARK MODE</a>
         </div>
       </Drawer>

@@ -1,11 +1,21 @@
+import React, { Fragment } from 'react';
 import './App.css';
+import { BrowserRouter as Router
+  //  Route, Switch 
+  } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+import Landing from './components/layout/Landing';
 
 function App() {
   return (
-    <div>
+    <Router>
+      <Fragment>
         <Navbar />
-    </div>
+          <section>
+                <Landing />
+            </section>
+      </Fragment>
+    </Router>
   );
 }
 
