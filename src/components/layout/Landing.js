@@ -36,18 +36,23 @@ const Landing = () => {
 
             
         <div className='flex flex-row items-center w-screen bg-gray-200 text-gray-900 justify-around'>
-                    <div className='text-xs font-bold w-full p-1 sm:p-8 text-center hover:bg-gray-300 duration-1000'>
-                        <span>FACEBOOK</span>
+                    <div className='text-xs font-bold w-full p-0 py-2 sm:p-6 text-gray-700 text-center hover:bg-gray-300 duration-1000'>
+                        <span className='hidden'>FACEBOOK</span>
+                        <i className='fa fa-facebook-f fa-2x'></i>
                         {/* <FontAwesomeIcon icon={}/> */}
                     </div>
-                    <div className='text-xs font-bold w-full p-1 sm:p-8 text-center hover:bg-gray-300 duration-1000'>
-                        INSTAGRAM
+                    <div className='text-xs font-bold w-full p-0 py-2 sm:p-6 text-gray-700 text-center hover:bg-gray-300 duration-1000'>
+                        <span className='hidden'>INSTAGRAM</span>
+                        <i className='fa fa-instagram fa-2x'></i>
+
                     </div>
-                    <div className='text-xs font-bold w-full p-1 sm:p-8 text-center hover:bg-gray-300 duration-1000'>
-                        TWITTER
+                    <div className='text-xs font-bold w-full p-0 py-2 sm:p-6 text-gray-700 text-center hover:bg-gray-300 duration-1000'>
+                        <span className='hidden'>TWITTER</span>
+                        <i className='fa fa-twitter fa-2x'></i>
                     </div>
-                    <div className='text-xs font-bold w-full p-1 sm:p-8 text-center hover:bg-gray-300 duration-1000'>
-                        WHATSAPP
+                    <div className='text-xs font-bold w-full p-0 py-2 sm:p-6 text-gray-700 text-center hover:bg-gray-300 duration-1000'>
+                        <span className='hidden'>GOOGLE</span>
+                        <i className='fa fa-google fa-2x'></i>
                     </div>
         </div>
 
