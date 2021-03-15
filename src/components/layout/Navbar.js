@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import { Link } from 'react-router-dom';
+ 
 
 
 const drawerWidth = 240;
@@ -94,7 +96,7 @@ const Navbar = () => {
                 <DehazeIcon 
                     onClick={handleDrawerOpen}
                     className={clsx(classes.menuButton, open && classes.hide)}/>
-                    <span >FlyBuy</span>
+                    <Link to='/'>FlyBuy</Link>
             </div>
 
 
@@ -118,7 +120,7 @@ const Navbar = () => {
                     </div>
                    
                     <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
-                        <a href='#!'>Premium</a>
+                        <Link to="/products">Products</Link>
                     </div>
                    
             </div>
@@ -157,12 +159,14 @@ const Navbar = () => {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <div className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
-          <a href='#!'>About</a>
-        </div>
-        <div className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
-          <a href='#!'>Premium</a>
-        </div>
+        <Link to='/'>
+        <div onClick={handleDrawerClose} className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
+          Home
+        </div></Link>
+        <Link to='/products'>
+        <div onClick={handleDrawerClose} className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
+          Products
+        </div></Link>
         <div className='bg-white text-gray-600 py-2 px-4 hover:bg-gray-200'>
           <a href='#!'>Blog</a>
         </div>

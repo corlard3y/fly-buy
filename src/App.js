@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import './App.css';
-import { BrowserRouter as Router
-  //  Route, Switch 
+import { BrowserRouter as Router,Route, Switch 
   } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
+import Products from './components/Products/Products';
 
 function App() {
   return (
@@ -12,7 +12,10 @@ function App() {
       <Fragment>
         <Navbar />
           <section>
-                <Landing />
+                <Route exact path='/' component={Landing} />
+                <Switch>
+                <Route path='/products' component={Products} />
+                </Switch>
             </section>
       </Fragment>
     </Router>
