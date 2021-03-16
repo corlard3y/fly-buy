@@ -1,20 +1,99 @@
-import React,{Fragment} from 'react';
-
-
-
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React,{Fragment,useState} from 'react';
 
 const Footer = () => {
-
+    
+    const [data, setData] = useState(faChevronDown);
+    const [data2, setData2] = useState(faChevronDown);
+    const [data3, setData3] = useState(faChevronDown);
+    const [data4, setData4] = useState(faChevronDown);
+    const [data5, setData5] = useState(faChevronDown);
+    const [data6, setData6] = useState(faChevronDown);
 
     const toggleFooterSection = (e) => {
         const list = e.target.parentElement.parentElement.querySelector(
           "article"
         );
-        // alert('kolade');
+
         if (list.classList.contains("h-0")) {
           list.classList.remove("h-0");
+          setData(faChevronUp);
+      
         } else {
           list.classList.add("h-0");
+          setData(faChevronDown);
+        }
+      }
+
+      const toggleFooterSection2 = (e) => {
+        const list = e.target.parentElement.parentElement.querySelector(
+          "article"
+        );
+
+        if (list.classList.contains("h-0")) {
+          list.classList.remove("h-0");
+          setData2(faChevronUp);
+      
+        } else {
+          list.classList.add("h-0");
+          setData2(faChevronDown);
+        }
+      }
+      const toggleFooterSection3 = (e) => {
+        const list = e.target.parentElement.parentElement.querySelector(
+          "article"
+        );
+
+        if (list.classList.contains("h-0")) {
+          list.classList.remove("h-0");
+          setData3(faChevronUp);
+      
+        } else {
+          list.classList.add("h-0");
+          setData3(faChevronDown);
+        }
+      }
+      const toggleFooterSection4 = (e) => {
+        const list = e.target.parentElement.parentElement.querySelector(
+          "article"
+        );
+
+        if (list.classList.contains("h-0")) {
+          list.classList.remove("h-0");
+          setData4(faChevronUp);
+      
+        } else {
+          list.classList.add("h-0");
+          setData4(faChevronDown);
+        }
+      }
+      const toggleFooterSection5 = (e) => {
+        const list = e.target.parentElement.parentElement.querySelector(
+          "article"
+        );
+
+        if (list.classList.contains("h-0")) {
+          list.classList.remove("h-0");
+          setData5(faChevronUp);
+      
+        } else {
+          list.classList.add("h-0");
+          setData5(faChevronDown);
+        }
+      }
+      const toggleFooterSection6 = (e) => {
+        const list = e.target.parentElement.parentElement.querySelector(
+          "article"
+        );
+
+        if (list.classList.contains("h-0")) {
+          list.classList.remove("h-0");
+          setData6(faChevronUp);
+      
+        } else {
+          list.classList.add("h-0");
+          setData6(faChevronDown);
         }
       }
 
@@ -26,23 +105,24 @@ const Footer = () => {
       <div className="border-t md:px-4 md:pt-10 md:pb-5">
         <div className="flex flex-wrap md:max-w-screen-lg mx-auto">
           <section
-            className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
+            className="relative text-gray-700  font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
           >
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-row">
               <button
                 onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
+                className="uppercase text-xs font-bold tracking-wider  text-gray-700 focus:outline-none border-t border-white py-4 w-full text-left"
                 type="button"
               >
                 Lorem 
               </button>
+              
+              <FontAwesomeIcon icon={data} onClick={toggleFooterSection} className='relative top-4'/>
             </div>
             <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
+              className="uppercase text-xs font-bold tracking-wider text-gray-700 hover:underline hidden md:block"
               href="#!"
             >
-              Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas
-              mattis
+              Lorem 
             </a>
             <article className="h-0 md:h-auto -mt-4 md:mt-0 overflow-hidden">
               <ul className="my-5 text-sm tracking-wide">
@@ -64,17 +144,18 @@ const Footer = () => {
           <section
             className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
           >
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-row">
               <button
-                onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
+                onClick={toggleFooterSection2}
+                className="uppercase text-xs font-bold tracking-wider text-gray-700 focus:outline-none border-t border-white py-4 w-full text-left"
                 type="button"
               >
                 Ut porta
               </button>
+              <FontAwesomeIcon icon={data2} onClick={toggleFooterSection2} className='relative top-4'/>
             </div>
             <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
+              className="uppercase text-xs font-bold hover:underline tracking-wider text-gray-700 hidden md:block"
               href="#!"
             >
               Ut porta
@@ -108,17 +189,18 @@ const Footer = () => {
           <section
             className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
           >
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-row">
               <button
-                onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
+                onClick={toggleFooterSection3}
+                className="uppercase text-xs font-bold tracking-wider text-gray-700 focus:outline-none border-t border-white py-4 w-full text-left"
                 type="button"
               >
                 Praesent elementum
               </button>
+              <FontAwesomeIcon icon={data3} onClick={toggleFooterSection3} className='relative top-4'/>
             </div>
             <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
+              className="uppercase text-xs font-bold hover:underline tracking-wider text-gray-700 hidden md:block"
               href="#!"
             >
               Praesent elementum
@@ -140,17 +222,18 @@ const Footer = () => {
           <section
             className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
           >
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-row">
               <button
-                onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
+                onClick={toggleFooterSection4}
+                className="uppercase text-xs font-bold tracking-wider text-gray-700 focus:outline-none border-t border-white py-4 w-full text-left"
                 type="button"
               >
                 Aenean gravida orci in sem varius
               </button>
+              <FontAwesomeIcon icon={data4} onClick={toggleFooterSection4} className='relative top-4'/>
             </div>
             <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
+              className="uppercase text-xs font-bold hover:underline tracking-wider text-gray-700 hidden md:block"
               href="#!"
             >
               Aenean gravida orci in sem varius
@@ -166,17 +249,18 @@ const Footer = () => {
           <section
             className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
           >
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-row">
               <button
-                onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
+                onClick={toggleFooterSection5}
+                className="uppercase text-xs font-bold tracking-wider text-gray-700 focus:outline-none border-t border-white py-4 w-full text-left"
                 type="button"
               >
                 Donec a lorem
               </button>
+              <FontAwesomeIcon icon={data5} onClick={toggleFooterSection5} className='relative top-4'/>
             </div>
             <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
+              className="uppercase text-xs font-bold hover:underline tracking-wider text-gray-700 hidden md:block"
               href="#!"
             >
               Donec a lorem
@@ -198,17 +282,18 @@ const Footer = () => {
           <section
             className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
           >
-            <div className="md:hidden">
+            <div className="md:hidden flex flex-row">
               <button
-                onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
+                onClick={toggleFooterSection6}
+                className="uppercase text-xs font-bold tracking-wider text-gray-700 focus:outline-none border-t border-white py-4 w-full text-left"
                 type="button"
               >
                 Integer interdum
               </button>
+              <FontAwesomeIcon icon={data6} onClick={toggleFooterSection6} className='relative top-4'/>
             </div>
             <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
+              className="uppercase text-xs font-bold hover:underline tracking-wider text-gray-700 hidden md:block"
               href="#!"
             >
               Integer interdum
@@ -233,41 +318,7 @@ const Footer = () => {
               </ul>
             </article>
           </section>
-          <section
-            className="relative text-gray-700 font-light font-light border-b px-4 pb-4 md:py-3 w-full md:border-none md:w-1/4"
-          >
-            <div className="md:hidden">
-              <button
-                onClick={toggleFooterSection}
-                className="uppercase text-xs font-bold tracking-wider text-pink-700 focus:outline-none border-t border-white py-4 w-full text-left"
-                type="button"
-              >
-                Quisque
-              </button>
-            </div>
-            <a
-              className="uppercase text-xs font-bold tracking-wider text-pink-700 hidden md:block"
-              href="#!"
-            >
-              Quisque
-            </a>
-            <article className="h-0 md:h-auto -mt-4 md:mt-0 overflow-hidden">
-              <ul className="my-5 text-sm tracking-wide">
-                <li className="my-3 tracking-wide">
-                  <a href="#!">Finibus nulla eget</a>
-                </li>
-                <li className="my-3 tracking-wide">
-                  <a href="#!">Pellentesque</a>
-                </li>
-                <li className="my-3 tracking-wide">
-                  <a href="#!">Duis efficitur</a>
-                </li>
-                <li className="my-3 tracking-wide">
-                  <a href="#!">Cras at lacus</a>
-                </li>
-              </ul>
-            </article>
-          </section>
+    
         </div>
       </div>
       <div className="max-w-screen-lg mx-auto border-none px-4">
@@ -276,7 +327,7 @@ const Footer = () => {
         >
           <div>
             <p className="leading-8 tracking-wide">
-              &copy; Lorem Ipsum Co., 123 Lorem Street, New York, NY
+              &copy; corlardey., 2021
             </p>
           </div>
           <div>
