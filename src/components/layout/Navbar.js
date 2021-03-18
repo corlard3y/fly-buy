@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faHome } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -118,24 +118,28 @@ const Navbar = () => {
                     <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>About</a>
                     </div>
-                   
+                    <Link to="#!">
                     <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
-                        <Link to="/products">Products</Link>
-                    </div>
+                        Contact
+                    </div></Link>
                    
             </div>
             
 
 
             <div className='flex flex-row'>
-            <div className='text-sm font-semibold bg-gray-200 md:bg-transparent text-gray-700 md:text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
-                        <a href='#!'>Contact</a>{'  '}
-                        <FontAwesomeIcon icon={faPhone}/>
+            <Link to='/products'>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 md:bg-transparent text-gray-700 md:text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
+                        <div className='hidden sm:block'>Products</div>{'  '}
+                        <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
-                    <div className='text-sm font-semibold bg-gray-200 ml-2 md:bg-transparent text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
-                        <a href='#!'>Cart</a>{'  '}
-                        <FontAwesomeIcon icon={faShoppingCart}/>
+                    </Link>
+                    <Link to='/cart'>
+                    <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 ml-2 md:bg-transparent text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                        <div className='hidden sm:block'>Cart</div>{'  '}
+                        <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
                     </div>
+                    </Link>
             </div>
 
 

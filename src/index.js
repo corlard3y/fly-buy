@@ -4,11 +4,21 @@ import './assets/main.css';
 import 'font-awesome/css/font-awesome.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import { createStore } from 'redux';
+// import store from './store';
+// import { Provider } from 'react-redux';
+// import  cartReducer  from './components/reducers/cartReducer';
+
+// const store = createStore(cartReducer);
+
 
 ReactDOM.render(
+  // <Provider store={store}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  // </Provider>
+,
   document.getElementById('root')
 );
 

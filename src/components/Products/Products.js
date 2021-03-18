@@ -5,9 +5,13 @@ import Lucas from '../../assets/img/lucas.jpg';
 import Binara from '../../assets/img/binara.jpg';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
 import Footer from '../layout/Footer';
+// import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
-const Product = props => {
+const Product = () => {
+    
+    
     return (
         <div>
              <div className='h-96 bg-pink-900 p-6 pt-36  md:flex md:flex-col font-bold text-white md:pt-48 md:pb-80 '>
@@ -32,7 +36,11 @@ const Product = props => {
                             Our Products
                         </div>
 
+             {/* <div className='w-full flex flex-col sm:flex-row sm:flex-wrap items-center sm:justify-around'>
+                {itemList}
+            </div> */}
 
+ 
                         <div className="mt-8 flex flex-col sm:flex-row">
           <div
             className="flex-1 text-gray-700 text-center border border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-100 xs:px-5 xs:py-5 px-2 py-2 m-2 rounded"
@@ -90,9 +98,10 @@ const Product = props => {
               
             </div>
           </div>
-        </div>
+        </div> 
 
             </div>
+            
 
             <div>
                 <Footer />
@@ -102,5 +111,6 @@ const Product = props => {
     )
 }
 
+        
 
-export default Product
+export default Product;
