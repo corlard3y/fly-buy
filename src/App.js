@@ -2,9 +2,8 @@ import React, { Fragment } from 'react';
 import './App.css';
 import { BrowserRouter as Router,Route, Switch 
   } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-import Products from './components/Products/Products';
+import ProductPage from './components/Products/ProductPage';
 import Cart from './components/Cart/Cart';
 
 
@@ -13,11 +12,10 @@ function App() {
     
     <Router>
       <Fragment>
-        <Navbar />
           <section>
                 <Route exact path='/' component={Landing} />
                 <Switch>
-                    <Route path='/products' component={Products} />
+                    <Route path='/products' component={ProductPage} />
                     <Route path='/cart' component={Cart} />
                 </Switch>
             </section>

@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-const Navbar = () => {
+const RegNav = () => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -91,8 +91,8 @@ const Navbar = () => {
     return (
         <div>
 
-        <nav className='flex flex-row fixed top-0 w-screen bg-white justify-between p-3 antialiased pr-4 sm:pr-8 md:bg-transparent'>
-            <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700 md:text-white'>
+        <nav className='flex flex-row fixed top-0 w-screen bg-white justify-between p-3 border-b border-gray-200 antialiased pr-4 sm:pr-8'>
+            <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700'>
                 <DehazeIcon 
                     onClick={handleDrawerOpen}
                     className={clsx(classes.menuButton, open && classes.hide)}/>
@@ -112,14 +112,14 @@ const Navbar = () => {
 
 
             <div className='hidden lg:flex lg:flex-row lg:mr-2 lg:ml-auto'>
-                    <div className='text-sm font-semibold bg-transparent rounded-lg text-gray-700 md:text-white dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='text-sm font-semibold bg-transparent rounded-lg text-gray-700 dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>Blog</a>
                     </div>
-                    <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='text-sm font-semibold text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>About</a>
                     </div>
                     <Link to="#!">
-                    <div className='text-sm font-semibold text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='text-sm font-semibold text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         Contact
                     </div></Link>
                    
@@ -129,13 +129,13 @@ const Navbar = () => {
 
             <div className='flex flex-row'>
             <Link to='/products'>
-            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 md:bg-transparent text-gray-700 md:text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
                         <div className='hidden sm:block'>Products</div>{'  '}
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
                     <Link to='/cart'>
-                    <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 ml-2 md:bg-transparent text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                    <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 ml-2 text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <div className='hidden sm:block'>Cart</div>{'  '}
                         <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
                     </div>
@@ -184,4 +184,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default RegNav;

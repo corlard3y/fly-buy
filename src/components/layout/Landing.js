@@ -7,6 +7,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Lucas from '../../assets/img/lucas.jpg';
 import Binara from '../../assets/img/binara.jpg';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 // import WOW from 'wow.js/dist/wow.js';
 // import Carousel from 're-carousel';
 import SearchIcon from '@material-ui/icons/Search';
@@ -18,6 +19,8 @@ const Landing = () => {
 
     return (
         <Fragment>
+            <div className='w-full overflow-x-hidden'>
+            <Navbar />
              <div className='h-auto bg-pink-900 p-6 pt-36 md:flex md:flex-col md:pt-36 md:pb-24 md:pb-0 
                 font-bold text-white '>
                         <span className='text-3xl text-center sm:text-left sm:text-3xl md:text-5xl'>
@@ -41,7 +44,6 @@ const Landing = () => {
                     <div className='text-xs font-bold w-full p-0 py-2 sm:p-6 text-gray-700 text-center hover:bg-gray-300 duration-1000'>
                         <span className='hidden'>FACEBOOK</span>
                         <i className='fa fa-facebook-f fa-2x'></i>
-                        {/* <FontAwesomeIcon icon={}/> */}
                     </div>
                     <div className='text-xs font-bold w-full p-0 py-2 sm:p-6 text-gray-700 text-center hover:bg-gray-300 duration-1000'>
                         <span className='hidden'>INSTAGRAM</span>
@@ -256,6 +258,9 @@ const Landing = () => {
 
         <div>
             <Footer />
+        </div>
+
+
         </div>
 
 </Fragment>
