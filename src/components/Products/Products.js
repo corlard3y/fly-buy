@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import formatCurrency from '../../util';
 
 
 class Products extends Component {
@@ -33,7 +34,7 @@ constructor(props) {
                 </div>
                 <div
                   className="block mt-1 lg:my-4 text-md leading-tight text-gray-900"
-                  >${product.price}</div>
+                  >{formatCurrency(product.price)}</div>
                   <small className='hidden lg:block lg:text-left'>
                         {product.description}
                   </small>

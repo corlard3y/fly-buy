@@ -1,5 +1,5 @@
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React,{Fragment} from 'react';
 import RegNav from '../layout/RegNav';
 // import { connect } from 'react-redux';
