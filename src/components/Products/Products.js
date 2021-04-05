@@ -16,7 +16,7 @@ constructor(props) {
         return <div>
             <ul className='products flex justify-center list-none flex-wrap px-4'>
                 {this.props.products.map(product => (
-                    <li key={product._id} className='flex-0 w-1/2 p-2'>
+                    <li key={product._id} className='flex-0 w-screen xs:w-1/2 p-2'>
                          <div
             className="flex-1 text-gray-700 text-center border border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-100 sm:px-4 sm:py-4 px-2 py-2 m-2 rounded"
           >
@@ -39,7 +39,7 @@ constructor(props) {
                         {product.description}
                   </small>
 
-                <button className='primary w-40 border-none bg-green-400 text-white hover:bg-green-600 p-1 mt-2 lg:mt-auto object-center focus:outline-none rounded-md'>
+                <button onClick={()=>this.props.addToCart(product)} className='primary w-auto sm:w-40 border-none bg-transparent sm:bg-green-400 text-gray-500 hover:text-gray-700 sm:text-white sm:hover:text-white sm:hover:bg-green-600 p-1 mt-2 lg:mt-auto object-center focus:outline-none rounded-md'>
                   <span>Add to Cart</span>{'   '}
                   <FontAwesomeIcon icon={faShoppingCart}/>
               </button>

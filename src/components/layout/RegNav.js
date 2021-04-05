@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import { Link } from 'react-router-dom';
+import Cart from '../Cart/Cart';
  
 
 
@@ -75,7 +76,9 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-const RegNav = () => {
+const RegNav = (props) => {
+  const {cartItems} = props;
+  // const removefromCart = props;
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -134,12 +137,9 @@ const RegNav = () => {
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
-                    <Link to='/cart'>
-                    <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 ml-2 text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
-                        <div className='hidden sm:block'>Cart</div>{'  '}
-                        <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
-                    </div>
-                    </Link>
+                    <Cart cartItems={cartItems} removeFromCart={props.removeFromCart}/>
+                  
+                  
             </div>
 
 

@@ -134,12 +134,7 @@ const Navbar = () => {
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
-                    <Link to='/cart'>
-                    <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 ml-2 md:bg-transparent text-gray-700 md:text-white bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
-                        <div className='hidden sm:block'>Cart</div>{'  '}
-                        <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
-                    </div>
-                    </Link>
+                  
             </div>
 
 
