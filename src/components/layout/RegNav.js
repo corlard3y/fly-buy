@@ -137,7 +137,9 @@ const RegNav = (props) => {
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
-                    <Cart cartItems={cartItems} removeFromCart={props.removeFromCart}/>
+                    <Cart cartItems={cartItems} removeFromCart={props.removeFromCart}
+                    createOrder={props.createOrder}
+                    />
                   
                   
             </div>

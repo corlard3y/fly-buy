@@ -1,11 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,6 +11,7 @@ import Slide from '@material-ui/core/Slide';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
 import { faBan, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import formatCurrency from '../../util';
+import Fade from 'react-reveal/Fade';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -39,7 +36,32 @@ function Cart(props) {
 
   const {cartItems} = props;
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [check, setCheck] = useState(false);
+  const [formdata, setFormdata] = useState({
+          name:'',
+          email:'',
+          address:''
+
+  });
+
+  const {name, email, address} = formdata;
+
+  const handleInput = e => setFormdata({
+    ...formdata,
+      [e.target.name]: e.target.value
+  });
+
+  const createOrder = e => {
+    e.preventDefault();
+    const order = {
+      name:name,
+      email:email,
+      address:address,
+      cartItems:props.cartItems
+    };
+    props.createOrder(order);
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -85,6 +107,7 @@ function Cart(props) {
 
     
           <div className='w-full p-4'>
+            <Fade right cascade>
             <ul className='w-full '>
               {cartItems.map(item => (
                 <li key={item._id} className='flex flex-col xs:flex-row xs:justify-between border p-1 rounded-lg text-center my-2'>
@@ -105,6 +128,7 @@ function Cart(props) {
                 </li>
               ))}
             </ul>
+            </Fade>
 
 
             {cartItems.length !== 0 && (
@@ -113,26 +137,46 @@ function Cart(props) {
                   Total:{'   '}
                   {formatCurrency(cartItems.reduce((a,c) => a + c.price * c.count, 0))}
                 </div>
-                <button className='w-auto p-2 rounded-lg bg-yellow-200'>
+                <button onClick={()=>setCheck(true)} className='w-auto p-2 rounded-lg bg-yellow-200 focus:outline-none'>
                   Proceed
                 </button>
               </div>
 
         )}
 
+        <div className=''>
+        {check && (
+          <Fade right cascade>
+                <div className='w-full ml-auto mr-auto xs:w-96 flex flex-col  p-2 border border-gray-200 rounded-lg'>
+                  <form onSubmit={(e)=>
+                    createOrder(e,formdata)} className='inline-block ml-auto mr-auto'>
+                        <ul>
+                          <li className='my-4'>
+                            <label>Email:{'  '}</label>
+                            <input name='email' type='email' className='border focus:outline-none border-gray-200 p-1 rounded-sm w-full' value={email} onChange={e=>handleInput(e)} required/>
+                          </li> 
+                          <li className='my-4'> 
+                            <label>Name:{'  '}</label>
+                            <input type='text' className='border focus:outline-none border-gray-200 p-1 rounded-sm w-full' name="name" onChange={e=>handleInput(e)} value={name} required/>
+                          </li>
+                          <li className='my-4'>
+                            <label>Address:{'  '}</label>
+                            <input name='address' type='text' className='border focus:outline-none border-gray-200 p-1 rounded-sm w-full' value={address} onChange={e=>handleInput(e)} required/>
+                          </li>
+                          <li>
+                            <button className='w-auto p-2 rounded-lg bg-yellow-200 focus:outline-none' type='submit'>
+                              Check Out
+                            </button>
+                          </li>
+                          </ul>
+                  </form>
+                </div>
+                </Fade>
+              )} 
         </div>
 
-      
-        
-        {/* <List>
-          <ListItem button>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-          </ListItem>
-        </List> */}
+        </div>
+
       </Dialog>
     </div>
   );
