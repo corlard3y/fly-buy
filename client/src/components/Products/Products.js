@@ -5,6 +5,9 @@ import formatCurrency from '../../util';
 import Fade from "react-reveal/Fade";
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
+import {connect} from "react-redux";
+import {fetchProducts} from '../../Actions/productActions';
+import Spinner from '../layout/Spinner';
 
 
 class Products extends Component {
@@ -15,7 +18,9 @@ constructor(props) {
         product: null
     };
 }
-
+    componentDidMount(){
+        this.props.fetchProducts();
+    }
     openModal = (product) => {
         this.setState({product})
     }
@@ -28,6 +33,8 @@ constructor(props) {
 
         return <div>
             <Fade bottom cascade>
+                { !this.props.products ? 
+            (<div><Spinner /></div>) :(   
             <ul className='products flex justify-center list-none flex-wrap px-4'>
                 {this.props.products.map(product => (
                     <li key={product._id} className='flex-0 w-screen xs:w-1/2 p-2'>
@@ -62,7 +69,8 @@ constructor(props) {
           </div>
                     </li>
                 ))}
-            </ul>
+            </ul>)
+    }
             </Fade>
             {product && <Modal isOpen={true} onRequestClose={this.closeModal}>
                 <Zoom>
@@ -105,4 +113,4 @@ constructor(props) {
 }
 
 
-export default Products;
+export default connect((state)=>({products:state.products.items}),{fetchProducts})(Products);

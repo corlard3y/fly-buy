@@ -4,12 +4,14 @@ import { BrowserRouter as Router,Route, Switch
   } from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import ProductPage from './components/Products/ProductPage';
-
+import store from './store';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
     
-    <Router>
+    <Provider store={store}>   
+       <Router>
       <Fragment>
           <section>
                 <Route exact path='/' component={Landing} />
@@ -19,6 +21,8 @@ function App() {
             </section>
       </Fragment>
     </Router>
+    </Provider>
+
   );
 }
 

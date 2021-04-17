@@ -1,9 +1,9 @@
 import React,{Fragment, Component} from 'react';
 // import SearchIcon from '@material-ui/icons/Search';
-import { faSearch} from '@fortawesome/free-solid-svg-icons';
+// import { faSearch} from '@fortawesome/free-solid-svg-icons';
 // import Lucas from '../../assets/img/lucas.jpg';
 // import Binara from '../../assets/img/binara.jpg';
-import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
+// import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
 import  RegNav  from '../layout/RegNav';
 import Footer from '../layout/Footer';
 import data from '../../data.json'; 
@@ -11,7 +11,8 @@ import data from '../../data.json';
 // import { Link } from 'react-router-dom';
 import Products from './Products';
 import Filter from "./Filter";
-import  Cart  from "../Cart/Cart";
+// import  Cart  from "../Cart/Cart";
+
 
 class ProductPage extends Component {
     constructor(){
@@ -88,7 +89,7 @@ class ProductPage extends Component {
           removeFromCart={this.removeFromCart}
           createOrder={this.createOrder}
           />
-          <div className='w-full mt-16 flex justify-center border-b'>
+          {/* <div className='w-full mt-16 flex justify-center border-b'>
           <div className='flex w-11/12 border h-10 rounded-sm mb-1'>
           <input
                     className="w-auto flex-1 px-4 focus:outline-none"
@@ -97,8 +98,8 @@ class ProductPage extends Component {
                      <FontAwesomeIcon icon={faSearch} className=""/>
                      </button>
           </div>
-          </div>
-            <div className='mt-4'>
+          </div> */}
+            <div className='mt-20'>
               <Filter count={this.state.products.length}
               size={this.state.size}
                sort={this.state.sort}
