@@ -12,6 +12,8 @@ import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
 import { faBan, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import formatCurrency from '../../util';
 import Fade from 'react-reveal/Fade';
+import { connect } from 'react-redux';
+import {removeFromCart} from '../../Actions/cartActions'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -182,4 +184,8 @@ function Cart(props) {
   );
 }
 
-export default Cart;
+export default connect((state)=>({
+  cartItems:state.cart.cartItems
+}),
+{removeFromCart}
+)(Cart);

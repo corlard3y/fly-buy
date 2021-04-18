@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const RegNav = (props) => {
-  const {cartItems} = props;
+  // const {cartItems} = props;
   // const removefromCart = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -137,8 +137,7 @@ const RegNav = (props) => {
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
-                    <Cart cartItems={cartItems} removeFromCart={props.removeFromCart}
-                    createOrder={props.createOrder}
+                    <Cart 
                     />
                   
                   

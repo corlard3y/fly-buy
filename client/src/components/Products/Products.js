@@ -8,6 +8,7 @@ import Zoom from 'react-reveal/Zoom';
 import {connect} from "react-redux";
 import {fetchProducts} from '../../Actions/productActions';
 import Spinner from '../layout/Spinner';
+import {addToCart} from '../../Actions/cartActions'
 
 
 class Products extends Component {
@@ -114,4 +115,4 @@ constructor(props) {
 }
 
 
-export default connect((state)=>({products:state.products.filteredItems}),{fetchProducts})(Products);
+export default connect((state)=>({products:state.products.filteredItems}),{fetchProducts,addToCart})(Products);
