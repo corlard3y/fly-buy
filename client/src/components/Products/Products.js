@@ -33,7 +33,8 @@ constructor(props) {
 
         return <div>
             <Fade bottom cascade>
-                { !this.props.products ? 
+                
+                {!this.props.products ? 
             (<div><Spinner /></div>) :(   
             <ul className='products flex justify-center list-none flex-wrap px-4'>
                 {this.props.products.map(product => (
@@ -113,4 +114,4 @@ constructor(props) {
 }
 
 
-export default connect((state)=>({products:state.products.items}),{fetchProducts})(Products);
+export default connect((state)=>({products:state.products.filteredItems}),{fetchProducts})(Products);
