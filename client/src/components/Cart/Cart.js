@@ -1,44 +1,22 @@
-import React,{useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
+import React,{useState,useEffect,Fragment} from 'react';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
-import { faBan, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faBan } from '@fortawesome/free-solid-svg-icons';
+import Modal  from 'react-modal';
+import  Zoom  from 'react-reveal/Zoom';
 import formatCurrency from '../../util';
 import Fade from 'react-reveal/Fade';
 import { connect } from 'react-redux';
-import {removeFromCart} from '../../Actions/cartActions'
+import {removeFromCart} from '../../Actions/cartActions';
+import {createOrder,clearOrder} from '../../Actions/orderActions';
+import RegNav from '../layout/RegNav';
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative',
-    backgroundColor:'white',
-    boxShadow:'none',
-    color:'gray',
-    // borderBottom:'1px solid gray'
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
-}));
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 
 function Cart(props) {
 
-  const {cartItems} = props;
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  const {cartItems, order} = props;
+  // const classes = useStyles();
+  // const [open, setOpen] = useState(false);
   const [check, setCheck] = useState(false);
   const [formdata, setFormdata] = useState({
           name:'',
@@ -54,57 +32,76 @@ function Cart(props) {
       [e.target.name]: e.target.value
   });
 
+  useEffect(() => {
+    Modal.setAppElement('body');
+  }, [ ]);
+
   const createOrder = e => {
     e.preventDefault();
     const order = {
       name:name,
       email:email,
       address:address,
-      cartItems:props.cartItems
+      cartItems:props.cartItems,
+      total:props.cartItems.reduce((a,c)=>a + c.price * c.count, 0)
     };
     props.createOrder(order);
   }
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const closeModal = () => {
+    props.clearOrder();
+  }
 
   
 
 
   return (
+    <Fragment>
     <div>
-      <button variant="outlined" className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 ml-2 text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline' onClick={handleClickOpen}>
-                     <div className='hidden sm:block'>Cart</div>{'  '}
-                        <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
-      </button>
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-          <IconButton edge="start" color="inherit" className='focus:outline-none' onClick={handleClose} aria-label="close">
-              <CloseIcon />
-            </IconButton>
-            
-            <Typography variant="h6" className={classes.title}>
-              Cart Items
-            </Typography>
-          
-          </Toolbar>
-        </AppBar>
+      <RegNav />
+      
         <div>
           {cartItems.length === 0 ? 
-            <div className='w-full text-center font-bold text-gray-500 text-xl'>Your Cart is Empty{'   '}
+            <div className='mt-20 w-full text-center font-bold text-gray-500 text-xl'>Your Cart is Empty{'   '}
               <FontAwesomeIcon icon={faBan}/>
             </div>
             :
-            <div className='w-full text-center font-bold text-gray-500 text-xl'>You have {cartItems.length} Items in the Cart</div>
+            <div className='mt-20 w-full text-center font-bold text-gray-500 text-xl'>You have {cartItems.length} Items in the Cart</div>
             }
 
         </div>
+
+        {
+          order && <Modal isOpen={true} onRequestClose={closeModal}>
+            <Zoom>
+              <button className='text-xs font-bold float-right text-red-500' onClick={closeModal}>Close</button>
+              <div className='text-center text-sm'>
+                <h3 className='font-bold'>Your Order has been placed.</h3>
+                <h2 className='font-bold'> Order {order._id}</h2>
+                <ul>
+                  <li>
+                    <div>Name:{'  '} {order.name}</div>
+                  </li>
+                  <li>
+                    <div>Email:{'  '}{order.email}</div>
+                  </li>
+                  <li>
+                    <div>Address:{'  '}{order.address}</div>
+                  </li>
+                  <li>
+                    <div>Total:{'  '}{formatCurrency(order.total)}</div>
+                  </li>
+                  <li>
+                    <div>Name:{'  '}{order.cartItems.map(x=>(
+                      <span key={x._id}>{x.count} {" x "} {x.title}</span>
+                    ))}</div>
+                  </li>
+                </ul>
+              </div>
+            </Zoom>
+          </Modal>
+        }
 
 
     
@@ -179,13 +176,16 @@ function Cart(props) {
 
         </div>
 
-      </Dialog>
     </div>
+    </Fragment>
   );
 }
 
 export default connect((state)=>({
-  cartItems:state.cart.cartItems
+  cartItems:state.cart.cartItems,
+  order:state.order.order
 }),
-{removeFromCart}
+{removeFromCart,
+createOrder,
+clearOrder}
 )(Cart);

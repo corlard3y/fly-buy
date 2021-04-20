@@ -3,13 +3,13 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import { Link } from 'react-router-dom';
-import Cart from '../Cart/Cart';
+// import Cart from '../Cart/Cart';
  
 
 
@@ -132,13 +132,20 @@ const RegNav = (props) => {
 
             <div className='flex flex-row'>
             <Link to='/products'>
-            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <div className='hidden sm:block'>Products</div>{'  '}
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
-                    <Cart 
-                    />
+
+                    <Link to='/cart'>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-2'>
+                        <div className='hidden sm:block'>Cart</div>{'  '}
+                        <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
+                    </div>
+                    </Link>
+
+          
                   
                   
             </div>
@@ -172,9 +179,11 @@ const RegNav = (props) => {
         <div onClick={handleDrawerClose} className='bg-white text-gray-600  py-2 px-4 hover:bg-gray-200'>
           Products
         </div></Link>
+        <Link to='/cart'>
         <div className='bg-white text-gray-600 py-2 px-4 hover:bg-gray-200'>
-          <a href='#!'>Blog</a>
+          <a href='#!'>Cart</a>
         </div>
+        </Link>
         <div className='bg-white text-gray-600 py-2 px-4 hover:bg-gray-200'>
           <a href='#!'>DARK MODE</a>
         </div>

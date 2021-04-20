@@ -6,6 +6,7 @@ import Landing from './components/layout/Landing';
 import ProductPage from './components/Products/ProductPage';
 import store from './store';
 import { Provider } from 'react-redux';
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
                 <Route exact path='/' component={Landing} />
                 <Switch>
                     <Route path='/products' component={ProductPage} />
+                    <Route path='/cart' component={Cart} />
                 </Switch>
             </section>
       </Fragment>
