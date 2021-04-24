@@ -9,8 +9,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import { Link } from 'react-router-dom';
-// import Cart from '../Cart/Cart';
- 
+import { Badge } from '@material-ui/core';
+import {connect} from 'react-redux'; 
+// import { addToCart } from '../../Actions/cartActions';
 
 
 const drawerWidth = 240;
@@ -77,8 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const RegNav = (props) => {
-  // const {cartItems} = props;
-  // const removefromCart = props;
+  const {cartItems } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -115,9 +115,7 @@ const RegNav = (props) => {
 
 
             <div className='hidden lg:flex lg:flex-row lg:mr-2 lg:ml-auto'>
-                    <div className='text-sm font-semibold bg-transparent rounded-lg text-gray-700 dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
-                        <a href='#!'>Blog</a>
-                    </div>
+                    
                     <div className='text-sm font-semibold text-gray-700 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <a href='#!'>About</a>
                     </div>
@@ -139,9 +137,12 @@ const RegNav = (props) => {
                     </Link>
 
                     <Link to='/cart'>
-            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-2'>
+            <div className='flex flex-row justify-between w-auto text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-2'>
                         <div className='hidden sm:block'>Cart</div>{'  '}
+
+                        <Badge badgeContent={cartItems.length} color='error'>
                         <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
+                        </Badge>
                     </div>
                     </Link>
 
@@ -194,4 +195,6 @@ const RegNav = (props) => {
     )
 }
 
-export default RegNav;
+export default connect((state)=>({
+  cartItems:state.cart.cartItems
+}))(RegNav);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {filterProducts,sortProducts} from '../../Actions/productActions'
-import Spinner from '../layout/Spinner';
+// import Spinner from '../layout/Spinner';
 
 class Filter extends React.Component {
 constructor(props) {
@@ -13,7 +13,7 @@ constructor(props) {
 
     render() {
         return (
-            !this.props.filteredProducts? (<div><Spinner/></div>):(
+            !this.props.filteredProducts? (<div></div>):(
                 <div className='filter flex flex-row justify-between px-8'>
                 <div className='filter-result font-bold text-xl'>
                     {this.props.filteredProducts.length} Products

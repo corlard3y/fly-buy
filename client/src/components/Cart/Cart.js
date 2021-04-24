@@ -15,8 +15,6 @@ import RegNav from '../layout/RegNav';
 function Cart(props) {
 
   const {cartItems, order} = props;
-  // const classes = useStyles();
-  // const [open, setOpen] = useState(false);
   const [check, setCheck] = useState(false);
   const [formdata, setFormdata] = useState({
           name:'',
@@ -107,9 +105,9 @@ function Cart(props) {
     
           <div className='w-full p-4'>
             <Fade right cascade>
-            <ul className='w-full '>
+            <ul className='w-full'>
               {cartItems.map(item => (
-                <li key={item._id} className='flex flex-col xs:flex-row xs:justify-between border p-1 rounded-lg text-center my-2'>
+                <li key={item._id} className='flex flex-col xs:flex-row xs:p-4 xs:justify-between border p-1 rounded-lg text-center my-2'>
                     <div className="lg:flex-shrink-0">
                       <img src={item.image} className='rounded-lg w-auto xs:w-24 xs:h-24 sm:w-64 sm:h-64' alt="" ></img>
                     </div>
