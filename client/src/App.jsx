@@ -7,6 +7,7 @@ import ProductPage from './components/Products/ProductPage';
 import store from './store';
 import { Provider } from 'react-redux';
 import Cart from './components/Cart/Cart';
+import { AdminPage } from './Admin/AdminPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                 <Switch>
                     <Route path='/products' component={ProductPage} />
                     <Route path='/cart' component={Cart} />
+                    <Route path='/admin' component={AdminPage} />
                 </Switch>
             </section>
       </Fragment>

@@ -1,6 +1,7 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React,{Fragment,useState} from 'react';
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
     
@@ -301,7 +302,7 @@ const Footer = () => {
             <article className="h-0 md:h-auto -mt-4 md:mt-0 overflow-hidden">
               <ul className="my-5 text-sm tracking-wide">
                 <li className="my-3 tracking-wide">
-                  <a href="#!">Dignissim gravida</a>
+                  <Link to='/admin'>Admin</Link>
                 </li>
                 <li className="my-3 tracking-wide">
                   <a href="#!">Eu mollis elit</a>
