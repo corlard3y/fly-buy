@@ -20,6 +20,7 @@ export const clearOrder = () => (dispatch) => {
     dispatch({
         type:CLEAR_ORDER,
     });
+    window.location.href ='/products';
 }
 export const fetchOrder = () => (dispatch) => {
     fetch('http://localhost:5000/api/orders')

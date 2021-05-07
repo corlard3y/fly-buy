@@ -1,7 +1,6 @@
-import React,{useState,useEffect,Fragment} from 'react';
+import React,{useState,Fragment} from 'react';
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
-import { faBan } from '@fortawesome/free-solid-svg-icons';
-import Modal  from 'react-modal';
+import { faBan, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import  Zoom  from 'react-reveal/Zoom';
 import formatCurrency from '../../util';
 import Fade from 'react-reveal/Fade';
@@ -9,10 +8,32 @@ import { connect } from 'react-redux';
 import {removeFromCart} from '../../Actions/cartActions';
 import {createOrder,clearOrder} from '../../Actions/orderActions';
 import RegNav from '../layout/RegNav';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    width: 400,
+    maxHeight:'12rem',
+    margin:'auto',
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2, 4, 3),
+    borderRadius:'1rem',
+    border:'1px solid gray',
+  },
+}));
 
 
 function Cart(props) {
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+    props.clearOrder();
+  };
+
 
   const {cartItems, order} = props;
   const [check, setCheck] = useState(false);
@@ -30,12 +51,9 @@ function Cart(props) {
       [e.target.name]: e.target.value
   });
 
-  useEffect(() => {
-    Modal.setAppElement('body');
-  }, [ ]);
-
   const createOrder = e => {
     e.preventDefault();
+    setOpen(true);
     const order = {
       name:name,
       email:email,
@@ -46,10 +64,6 @@ function Cart(props) {
     props.createOrder(order);
   }
 
-
-  const closeModal = () => {
-    props.clearOrder();
-  }
 
   
 
@@ -65,15 +79,23 @@ function Cart(props) {
               <FontAwesomeIcon icon={faBan}/>
             </div>
             :
-            <div className='mt-20 w-full text-center font-bold text-gray-500 text-xl'>You have {cartItems.length} Items in the Cart</div>
+            <div className='mt-8 w-full text-center font-bold text-gray-500 text-xl'>You have {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'} in the Cart</div>
             }
 
         </div>
 
+ 
         {
-          order && <Modal isOpen={true} onRequestClose={closeModal}>
-            <Zoom>
-              <button className='text-xs font-bold float-right text-red-500' onClick={closeModal}>Close</button>
+          order && <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        style={{display:'flex',justifyContent:'center'}}
+      >
+        <Zoom>
+        <div className={classes.paper}>
+ 
               <div className='text-center text-sm'>
                 <h3 className='font-bold'>Your Order has been placed.</h3>
                 <h2 className='font-bold'> Order {order._id}</h2>
@@ -97,56 +119,61 @@ function Cart(props) {
                   </li>
                 </ul>
               </div>
-            </Zoom>
-          </Modal>
-        }
-
+      <button onClick={handleClose} className='float-right font-bold bg-gray-200 px-2 rounded-md hover:bg-gray-300 text-gray-700'>close</button>
+    </div>
+    </Zoom>
+      </Modal>}
 
     
           <div className='w-full p-4'>
             <Fade right cascade>
-            <ul className='w-full'>
+            <ul className='w-full bg-gray-50 rounded-md shadow-sm p-8'>
               {cartItems.map(item => (
-                <li key={item._id} className='flex flex-col xs:flex-row xs:p-4 xs:justify-between border p-1 rounded-lg text-center my-2'>
+                <li key={item._id} className='flex flex-row p-1 border-b border-gray-200'>
                     <div className="lg:flex-shrink-0">
-                      <img src={item.image} className='rounded-lg w-auto xs:w-24 xs:h-24 sm:w-64 sm:h-64' alt="" ></img>
+                      <img src={item.image} className='rounded-lg w-auto h-auto xs:w-24 xs:h-24 sm:w-48 sm:h-48' alt="" ></img>
                     </div>
-                    <div className='flex flex-col xs:justify-between'>
+                    <div className='w-full my-auto flex flex-row justify-around'>
                     <div>
-                      {item.title}
+                    {item.title}
                     </div>
-
                     <div>
-                       {formatCurrency(item.price)} * 1{''}
-                       <button onClick={()=>props.removeFromCart(item)} className='primary w-auto sm:w-40 border-none bg-transparent sm:bg-red-600 text-gray-500 hover:text-gray-700 sm:text-white sm:hover:text-white sm:hover:bg-red-800 p-1 mt-2 lg:mt-auto object-center focus:outline-none rounded-md'>Remove From Cart</button>
+                    {formatCurrency(item.price)} * 1{''}
+                    </div>
+                    <div>
+                    <button onClick={()=>props.removeFromCart(item)} className='primary w-auto border-0 sm:border sm:border-red-500 bg-white rounded-sm text-red-500 p-1 object-center focus:outline-none'><span className='hidden sm:inline-block mr-2'>Remove From Cart</span><span className='text-red-500'><FontAwesomeIcon icon={faTimesCircle}/></span></button>
                     </div>
                     </div>
                     
                 </li>
               ))}
-            </ul>
-            </Fade>
-
-
-            {cartItems.length !== 0 && (
-                <div className='flex flex-row justify-between my-8 px-8'>
-                <div>
+                   {cartItems.length !== 0 && (
+                <div className='flex flex-row justify-between my-4'>
+                <div className='w-auto px-8 py-3 rounded-md text-sm bg-blue-400 text-white'>
                   Total:{'   '}
                   {formatCurrency(cartItems.reduce((a,c) => a + c.price * c.count, 0))}
                 </div>
-                <button onClick={()=>setCheck(true)} className='w-auto p-2 rounded-lg bg-yellow-200 focus:outline-none'>
+                <a href='#check'>
+                <button onClick={()=>setCheck(true)} className='w-auto px-8 py-3 rounded-md text-sm bg-green-400 text-white'>
                   Proceed
-                </button>
+                </button></a>
               </div>
 
         )}
 
-        <div className=''>
+              
+            </ul>
+            </Fade>
+
+
+           
+        <div className='mt-20'>
         {check && (
           <Fade right cascade>
                 <div className='w-full ml-auto mr-auto xs:w-96 flex flex-col  p-2 border border-gray-200 rounded-lg'>
                   <form onSubmit={(e)=>
-                    createOrder(e,formdata)} className='inline-block ml-auto mr-auto'>
+                    createOrder(e,formdata)
+                    } className='inline-block ml-auto mr-auto' id='check'>
                         <ul>
                           <li className='my-4'>
                             <label>Email:{'  '}</label>

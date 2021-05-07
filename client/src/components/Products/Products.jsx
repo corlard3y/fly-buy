@@ -74,7 +74,7 @@ constructor(props) {
             </ul>)
     }
             </Fade>
-            {product && <Modal isOpen={true} onRequestClose={this.closeModal}>
+            {product && <Modal isOpen={true} ariaHideApp={false} onRequestClose={this.closeModal}>
                 <Zoom>
                    
                     <div className='flex flex-row justify-between px-2'>
@@ -90,8 +90,8 @@ constructor(props) {
                         </div>
                         <div>{product.description}</div>
                         <div>
-                            Available Sizes: {product.availableSizes.map((x)=> (
-                                <span>{'   '}<button>{x}</button></span>
+                            Available Sizes: {product.availableSizes.map(x=> (
+                                <span key={x._id}>{'   '}<button>{x}</button></span>
                             ))}
                         </div>
                         <div>

@@ -15,17 +15,13 @@ class ProductPage extends Component {
     return ( 
       <Fragment>
         <div>
-          <RegNav 
-        
-          />
-            <div className='mt-20'>
+          <RegNav />
+            <div className='mt-8'>
               <Filter />
             </div>
             <div>
             <Products addToCart={this.addToCart}/>            
             </div>
-
-             
 
             <div>
                 <Footer />

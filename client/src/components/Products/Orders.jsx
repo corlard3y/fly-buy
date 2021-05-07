@@ -22,7 +22,6 @@ class Orders extends React.Component {
             <div>
             {!orders ? 
             (<div>
-                <span>Orders</span>
                 <div><Spinner /></div>
             </div>)
             :

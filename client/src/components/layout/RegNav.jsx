@@ -94,7 +94,7 @@ const RegNav = (props) => {
     return (
         <div>
 
-        <nav className='flex flex-row fixed top-0 w-screen bg-white justify-between p-3 border-b border-gray-200 antialiased pr-4 sm:pr-8'>
+        <nav className='flex flex-row top-0 w-screen justify-between p-3 border-b border-gray-200 antialiased pr-4 sm:pr-8'>
             <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700'>
                 <DehazeIcon 
                     onClick={handleDrawerOpen}

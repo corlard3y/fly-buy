@@ -1,6 +1,5 @@
 import  {FontAwesomeIcon}  from '@fortawesome/react-fontawesome';
 import React, { Fragment,
-    //  useState
      } from 'react';
 import {  faCheckCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -8,14 +7,10 @@ import Lucas from '../../assets/img/lucas.jpg';
 import Binara from '../../assets/img/binara.jpg';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-// import WOW from 'wow.js/dist/wow.js';
-// import Carousel from 're-carousel';
 import SearchIcon from '@material-ui/icons/Search';
 import Footer from './Footer';
 
 const Landing = () => {
-    // const [count, setCount] = useState(0);
-    // const [data, setData] = useState('');
 
     return (
         <Fragment>
@@ -169,14 +164,6 @@ const Landing = () => {
                       </div>
                       </div>
             </div>
-
-            {/* <div className='wow slideInLeft'>
-                    <p>Clicked {count} times ,welcome {data}</p>
-                    <p>
-                        <button onClick={()=>setCount(count + 1)}>increment</button>
-                    </p>
-                    <input type='text' placeholder='koko' onChange={(e)=>setData( e.target.value)}/>
-            </div> */}
 
 
             <div className='w-full p-4 mt-8'>
