@@ -94,7 +94,7 @@ const RegNav = (props) => {
     return (
         <div>
 
-        <nav className='flex flex-row top-0 w-screen justify-between p-3 border-b border-gray-200 antialiased pr-4 sm:pr-8'>
+        <nav className='font-muli flex flex-row top-0 w-screen justify-between p-3 border-b border-gray-200 antialiased pr-4 sm:pr-8'>
             <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700'>
                 <DehazeIcon 
                     onClick={handleDrawerOpen}
@@ -130,14 +130,14 @@ const RegNav = (props) => {
 
             <div className='flex flex-row'>
             <Link to='/products'>
-            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200  pt-1 sm:p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
                         <div className='hidden sm:block'>Products</div>{'  '}
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
 
                     <Link to='/cart'>
-            <div className='flex flex-row justify-between w-auto text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-2'>
+            <div className='flex flex-row justify-between w-auto text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200  pt-1 sm:p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-4'>
                         <div className='hidden sm:block'>Cart</div>{'  '}
 
                         <Badge badgeContent={cartItems.length} color='error'>

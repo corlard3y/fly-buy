@@ -32,7 +32,7 @@ constructor(props) {
     render() {
         const {product} = this.state;
 
-        return <div>
+        return <div className='font-muli'>
             <Fade bottom cascade>
                 
                 {!this.props.products ? 
@@ -77,25 +77,27 @@ constructor(props) {
             {product && <Modal isOpen={true} ariaHideApp={false} onRequestClose={this.closeModal}>
                 <Zoom>
                    
-                    <div className='flex flex-row justify-between px-2'>
-                        <div>Modal</div>
-                        <button className='text-gray-500 font-bold text-sm' onClick={this.closeModal}>Close</button>
+                    <div className='flex flex-row justify-between sm:px-2'>
+                        <div className='font-muli text-md sm:text-2xl text-center'>
+                        <strong>{product.title}</strong>
+                        </div>
+                        <button className='text-gray-500 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-lg font-bold text-sm' onClick={this.closeModal}>Close</button>
                     </div>
 
-                    <div className='flex flex-col sm:flex-row'>
+                    <div className='mt-4 flex flex-col sm:flex-row'>
                         <img className='rounded-lg w-full h-full sm:w-64 sm:h-64' src={product.image} alt=''></img>
-                        <div>
-                        <div>
-                            <strong>{product.title}</strong>
-                        </div>
-                        <div>{product.description}</div>
-                        <div>
+                        <div className='sm:p-8'>
+                        <div className='font-muli border-b border-gray-200 text-gray-800 text-xs sm:text-sm sm:mb-4 sm:pb-4'>{product.description}</div>
+                        <div className='font-muli text-xs sm:text-sm text-gray-800 my-2'>
                             Available Sizes: {product.availableSizes.map(x=> (
                                 <span key={x._id}>{'   '}<button>{x}</button></span>
                             ))}
                         </div>
-                        <div>
-                            <span>{formatCurrency(product.price)}</span>
+                        <div className='font-muli text-xs sm:text-sm text-gray-800 my-2'>
+                            <span>Price: {formatCurrency(product.price)}</span>
+                        </div>
+                        
+                        <div className='font-muli text-xs sm:text-sm my-2'>
                             <button onClick={()=>{this.props.addToCart(product);
                             this.closeModal();
                             }} className='primary w-auto sm:w-40 border-none bg-transparent sm:bg-green-400 text-gray-500 hover:text-gray-700 sm:text-white sm:hover:text-white sm:hover:bg-green-600 p-1 mt-2 lg:mt-auto object-center focus:outline-none rounded-md'>

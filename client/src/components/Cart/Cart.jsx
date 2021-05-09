@@ -127,9 +127,9 @@ function Cart(props) {
     
           <div className='w-full p-4'>
             <Fade right cascade>
-            <ul className='w-full bg-gray-50 rounded-md shadow-sm p-8'>
+            <ul className='w-full bg-gray-50 rounded-md shadow-sm'>
               {cartItems.map(item => (
-                <li key={item._id} className='flex flex-row p-1 border-b border-gray-200'>
+                <li key={item._id} className='flex flex-row p-1 border-b border-gray-200 p-8'>
                     <div className="lg:flex-shrink-0">
                       <img src={item.image} className='rounded-lg w-auto h-auto xs:w-24 xs:h-24 sm:w-48 sm:h-48' alt="" ></img>
                     </div>
@@ -148,7 +148,7 @@ function Cart(props) {
                 </li>
               ))}
                    {cartItems.length !== 0 && (
-                <div className='flex flex-row justify-between my-4'>
+                <div className='flex flex-row justify-between py-4 px-4'>
                 <div className='w-auto px-8 py-3 rounded-md text-sm bg-blue-400 text-white'>
                   Total:{'   '}
                   {formatCurrency(cartItems.reduce((a,c) => a + c.price * c.count, 0))}
@@ -170,7 +170,7 @@ function Cart(props) {
         <div className='mt-20'>
         {check && (
           <Fade right cascade>
-                <div className='w-full ml-auto mr-auto xs:w-96 flex flex-col  p-2 border border-gray-200 rounded-lg'>
+                <div className='w-full ml-auto mr-auto xs:w-96 flex flex-col bg-gray-50 p-2 border border-gray-200 rounded-lg'>
                   <form onSubmit={(e)=>
                     createOrder(e,formdata)
                     } className='inline-block ml-auto mr-auto' id='check'>

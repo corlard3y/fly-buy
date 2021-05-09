@@ -91,7 +91,7 @@ const Navbar = () => {
     return (
         <div>
 
-        <nav className='flex flex-row fixed top-0 w-screen bg-white justify-between p-3 antialiased pr-4 sm:pr-8 md:bg-transparent'>
+        <nav className='font-muli flex flex-row fixed top-0 w-screen bg-white justify-between p-3 antialiased pr-4 sm:pr-8 md:bg-transparent'>
             <div className='text-lg md:text-3xl lg:text-3xl font-bold lg:px-6 text-gray-700 md:text-white'>
                 <DehazeIcon 
                     onClick={handleDrawerOpen}
@@ -129,13 +129,13 @@ const Navbar = () => {
 
             <div className='flex flex-row'>
             <Link to='/products'>
-            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 md:bg-transparent text-gray-700 md:text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline '>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 md:bg-transparent text-gray-700 md:text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-0 sm:p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline  ml-4'>
                         <div className='hidden sm:block'>Products</div>{'  '}
                         <FontAwesomeIcon icon={faHome} className='mx-1 mt-1'/>
                     </div>
                     </Link>
                     <Link to='/cart'>
-            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-2'>
+            <div className='flex flex-row justify-between text-sm font-semibold bg-white sm:bg-gray-200 text-gray-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 p-0 sm:p-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline ml-2'>
                         <div className='hidden sm:block'>Cart</div>{'  '}
                         <FontAwesomeIcon icon={faShoppingCart} className='mx-1 mt-1'/>
                     </div>

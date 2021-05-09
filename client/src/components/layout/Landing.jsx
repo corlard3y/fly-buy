@@ -18,7 +18,7 @@ const Landing = () => {
             <Navbar />
              <div className='h-auto bg-pink-900 p-6 pt-36 md:flex md:flex-col md:pt-36 md:pb-24 md:pb-0 
                 font-bold text-white '>
-                        <span className='text-3xl text-center sm:text-left sm:text-3xl md:text-5xl'>
+                        <span className='font-serif text-3xl text-center sm:text-left sm:text-3xl md:text-5xl'>
                                 Find the Perfect <i>Freelance</i> <br className='hidden sm:block'></br> services for your business
                         </span>
                 
@@ -56,7 +56,7 @@ const Landing = () => {
         </div>
 
 
-         <div className='w-screen pt-10 p-4'>
+         <div className='font-muli w-screen pt-10 p-4'>
             <div className='text-gray-800 font-bold text-center text-xl sm:text-3xl'>
                 Professional Services we offer</div>
 
@@ -113,7 +113,7 @@ const Landing = () => {
 
             </div>
 
-            <div className='w-full bg-green-50 mt-8'>
+            <div className='font-muli w-full bg-green-50 mt-8'>
                     <div className='text-3xl font-bold text-center text-gray-800 pt-4'>
                         A whole world of freelance talent at your fingertips
                       </div> 
@@ -166,7 +166,7 @@ const Landing = () => {
             </div>
 
 
-            <div className='w-full p-4 mt-8'>
+            <div className='font-muli w-full p-4 mt-8'>
                         <div className='text-xl sm:text-3xl text-center font-bold text-gray-900
                         '>
                             Our Products

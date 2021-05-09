@@ -102,7 +102,7 @@ const Footer = () => {
     return (
         <Fragment>
         
-<footer className="mt-16">
+<footer className="mt-16 font-muli">
       <div className="border-t md:px-4 md:pt-10 md:pb-5">
         <div className="flex flex-wrap md:max-w-screen-lg mx-auto">
           <section
