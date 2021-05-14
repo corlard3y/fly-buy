@@ -6,12 +6,23 @@ import { fetchProducts } from '../../Actions/productActions';
 import Moment from 'react-moment';
 import Spinner from '../layout/Spinner';
 import { Fragment } from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 class Orders extends React.Component {
 
     componentDidMount(){
         this.props.fetchOrder();
         this.props.fetchProducts();
+    }
+
+    deleteProducts = async (id,e) => {
+        await axios.delete(`http://localhost:5000/api/products/${id}`)
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(error=> console.error('Error:',error))
+        window.location.reload();     
     }
 
 
@@ -27,6 +38,9 @@ class Orders extends React.Component {
             :
             (
                 <div>
+                    <Link to='/products'><div className='p-8 text-xs text-indigo-500'>
+                        Back...
+                    </div></Link>
                 <div className='my-4 text-center font-bold text-xl sm:text-3xl'>
                     Orders
                 </div>
@@ -78,6 +92,7 @@ class Orders extends React.Component {
                                 <th  className='border-r-2'>DESCRIPTION</th>
                                 <th className='border-r-2'>PRICE</th>
                                 <th className='border-r-2'>AVAILABLE SIZES</th>
+                                <th className='border-r-2'></th>
                             </tr>
                         </thead>
                         <tbody className='border border-gray-200 text-sm'>
@@ -88,6 +103,9 @@ class Orders extends React.Component {
                                  <td className='border-r-2'>{product.description}</td>
                                  <td  className='border-r-2'>{formatCurrency(product.price)}</td>
                                  <td className='border-r-2'>{[product.availableSizes]}</td>
+                                 <td className='border-r-2'>
+                                     <button className='w-auto px-2 sm:px-8 py-2 mx-4 rounded-md text-xs sm:text-sm bg-red-500 text-white' onClick={(e)=>this.deleteProducts(product._id,e)}>Delete</button>
+                                 </td>
                              </tr>
                             ))}
                         </tbody>

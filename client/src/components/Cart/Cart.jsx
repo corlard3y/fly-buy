@@ -129,11 +129,11 @@ function Cart(props) {
             <Fade right cascade>
             <ul className='w-full bg-gray-50 rounded-md shadow-sm'>
               {cartItems.map(item => (
-                <li key={item._id} className='flex flex-row p-1 border-b border-gray-200 p-8'>
+                <li key={item._id} className='flex flex-row border-b border-gray-200 p-2 sm:p-8'>
                     <div className="lg:flex-shrink-0">
-                      <img src={item.image} className='rounded-lg w-auto h-auto xs:w-24 xs:h-24 sm:w-48 sm:h-48' alt="" ></img>
+                      <img src={item.image} className='rounded-lg w-auto h-auto xs:w-20 xs:h-20 sm:w-48 sm:h-48' alt="" ></img>
                     </div>
-                    <div className='w-full my-auto flex flex-row justify-around'>
+                    <div className='font-nexa w-full my-auto flex flex-row justify-around text-xs sm:text-md'>
                     <div>
                     {item.title}
                     </div>
@@ -141,7 +141,7 @@ function Cart(props) {
                     {formatCurrency(item.price)} * 1{''}
                     </div>
                     <div>
-                    <button onClick={()=>props.removeFromCart(item)} className='primary w-auto border-0 sm:border sm:border-red-500 bg-white rounded-sm text-red-500 p-1 object-center focus:outline-none'><span className='hidden sm:inline-block mr-2'>Remove From Cart</span><span className='text-red-500'><FontAwesomeIcon icon={faTimesCircle}/></span></button>
+                    <button onClick={()=>props.removeFromCart(item)} className='primary w-auto border-0 hover:text-red-800 bg-transparent rounded-sm text-red-500 mb-2 focus:outline-none'><span className='hidden sm:inline-block mr-2'>Remove From Cart</span><span className='text-red-500'><FontAwesomeIcon icon={faTimesCircle}/></span></button>
                     </div>
                     </div>
                     
@@ -149,12 +149,12 @@ function Cart(props) {
               ))}
                    {cartItems.length !== 0 && (
                 <div className='flex flex-row justify-between py-4 px-4'>
-                <div className='w-auto px-8 py-3 rounded-md text-sm bg-blue-400 text-white'>
+                <div className='w-auto px-2 sm:px-8 py-3 rounded-md text-xs sm:text-sm bg-blue-400 text-white'>
                   Total:{'   '}
                   {formatCurrency(cartItems.reduce((a,c) => a + c.price * c.count, 0))}
                 </div>
                 <a href='#check'>
-                <button onClick={()=>setCheck(true)} className='w-auto px-8 py-3 rounded-md text-sm bg-green-400 text-white'>
+                <button onClick={()=>setCheck(true)} className='w-auto px-2 sm:px-8 py-3 rounded-md text-xs sm:text-sm bg-green-400 text-white'>
                   Proceed
                 </button></a>
               </div>
