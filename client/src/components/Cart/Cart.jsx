@@ -138,7 +138,7 @@ function Cart(props) {
                     {item.title}
                     </div>
                     <div>
-                    {formatCurrency(item.price)} * 1{''}
+                    {formatCurrency(item.price)} * {item.count}
                     </div>
                     <div>
                     <button onClick={()=>props.removeFromCart(item)} className='primary w-auto border-0 hover:text-red-800 bg-transparent rounded-sm text-red-500 mb-2 focus:outline-none'><span className='hidden sm:inline-block mr-2'>Remove From Cart</span><span className='text-red-500'><FontAwesomeIcon icon={faTimesCircle}/></span></button>

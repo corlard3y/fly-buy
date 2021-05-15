@@ -7,7 +7,7 @@ export const addToCart =  (product) => (dispatch, getState) => {
     cartItems.forEach(x=>{
         if(x._id === product._id){
             alreadyExists = true;
-            x.count++;
+            x.count+= 1;
         }
     });
     if(!alreadyExists){
