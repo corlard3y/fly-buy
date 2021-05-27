@@ -1,10 +1,14 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
 const path = require('path');
+const connectDB = require('./config/db')
 
 const app = express();
+
+connectDB();
+
 app.use(express.json({extended: false}));
 
 app.use((req, res, next) => {
@@ -14,13 +18,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
-mongoose.connect("mongodb+srv://corlard3y:booktara@cak3s.wuyr0.mongodb.net/flybuy_db?retryWrites=true&w=majority",{
-        useNewUrlParser:true,
-        useCreateIndex:true,
-        useUnifiedTopology:true
-});     
+// mongoose.connect(db,{
+//         useNewUrlParser:true,
+//         useCreateIndex:true,
+//         useUnifiedTopology:true
+// });     
 
 const Product = mongoose.model("products", new mongoose.Schema({
     _id:{ type:String, default: shortid.generate },
