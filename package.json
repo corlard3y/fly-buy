@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/corlard3y/fly-buy#readme",
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
     "express": "^4.17.1",
