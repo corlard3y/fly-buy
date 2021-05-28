@@ -39,7 +39,7 @@ constructor(props) {
             (<div><Spinner /></div>) :(   
             <ul className='products flex justify-center list-none flex-wrap px-4'>
                 {this.props.products.map(product => (
-                    <li key={product._id} className='flex-0 w-screen xs:w-1/2 p-2'>
+                    <li key={product._id} className='flex-0 w-screen sm:w-1/2 p-2'>
                          <div
             className="flex-1 text-gray-700 text-center border border-gray-200 bg-white hover:bg-gray-100 hover:border-gray-100 sm:px-4 sm:py-4 px-1 py-1 m-2 rounded"
           >

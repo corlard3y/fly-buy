@@ -131,7 +131,7 @@ function Cart(props) {
               {cartItems.map(item => (
                 <li key={item._id} className='flex flex-row border-b border-gray-200 p-2 sm:p-8'>
                     <div className="lg:flex-shrink-0">
-                      <img src={item.image} className='rounded-lg w-auto h-auto xs:w-20 xs:h-20 sm:w-48 sm:h-48' alt="" ></img>
+                      <img src={item.image} className='rounded-lg w-20 h-20 sm:w-48 sm:h-48' alt="" ></img>
                     </div>
                     <div className='font-nexa w-full my-auto flex flex-row justify-around text-xs sm:text-md'>
                     <div>
