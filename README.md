@@ -1,1 +1,1 @@
-An e-commerce store built using MERN stack.
+An e-commerce store developed using Tailwind,React/Redux,Node JS,Express and MongoDB 
