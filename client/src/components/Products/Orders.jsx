@@ -27,7 +27,8 @@ function Orders(props){
     }
     useEffect(() => {
         props.fetchOrder();
-        props.fetchProducts();     
+        props.fetchProducts();  
+        // eslint-disable-next-line react-hooks/exhaustive-deps   
     },[])
 
     const deleteProducts = async (id,e) => {
