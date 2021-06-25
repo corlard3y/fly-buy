@@ -12,8 +12,14 @@ input {
     font-family: 'New Athena Unicode', sans-serif;
 }
 .font-nexa{
-  font-family: 'Nexa', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+.font-nexa-thick{
+  font-family: 'Open Sans', sans-serif;
 }
 .font-muli {
   font-family:'Muli',sans-serif;
+}
+.font-out{
+  font-family: Grandstander;
 }

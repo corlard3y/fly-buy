@@ -1,14 +1,12 @@
-body {
-  margin: 0;
-  font-family: 'Nexa', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-*{
-  font-family: 'Nexa', sans-serif;
-}
-input {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .jump {
+    @apply h-24 text-white m-4 mt-auto mb-auto rounded-md flex content-center justify-center
+  }
+  .jump-content{
+    @apply flex justify-center mt-auto mb-auto font-bold text-lg
+  }
 }

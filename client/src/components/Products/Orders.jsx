@@ -66,6 +66,16 @@ function Orders(props){
             </div>)
             :
             (
+                <Fragment>
+                    <div className=''>
+                            <nav>
+                                <h1>Admin</h1>
+                                <a href='#!products'></a>
+                                <a href='#!orders'></a>
+                                <a href='#!form'></a>
+                            </nav>
+                            
+                    </div>
                 <div className='font-nexa'>
                     <Link to='/products'><div className='p-8 text-xs text-indigo-500'>
                         Back...
@@ -106,6 +116,7 @@ function Orders(props){
                     </table>
                 </div>
         </div>
+        </Fragment>
             )}
              {!products  ? (<div></div>) :
                  (  <div className='font-nexa'>

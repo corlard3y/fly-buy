@@ -328,7 +328,7 @@ const Footer = () => {
         >
           <div>
             <p className="leading-8 tracking-wide">
-              &copy; corlardey., 2021
+              &copy; corlard3y., 2021
             </p>
           </div>
           <div>
