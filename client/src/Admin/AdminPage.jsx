@@ -1,15 +1,24 @@
-import React from 'react'
-import Orders from '../components/Products/Orders'
+import React,{useEffect} from 'react';
+import {fetchProducts} from '../Actions/productActions';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+// import Orders from '../components/Products/Orders'
  
-export const AdminPage = () => {
+const AdminPage = (props) => {
+    const {products} = props;
+
+    useEffect(() => {
+        props.fetchProducts();
+         // eslint-disable-next-line react-hooks/exhaustive-deps          
+    },[])
     return (
         <div>
 
             <nav className='w-full border-b border-gray-300 p-2 text-gray-600 hover:text-gray-900 '>
                 <ul className='font-nexa w-full flex flex-row'>
-                    <li className='p-2'><a>Products</a></li>
-                    <li className='p-2'><a>Orders</a></li>
-                    <li className='p-2'><a>Add Products</a></li>
+                <Link to='/adminproducts'><li className='p-2'>Products</li></Link>
+                    <li className='p-2'><a href='#!'>Orders</a></li>
+                    <li className='p-2'><a href='#!'> Add Products</a></li>
                     <li className='ml-auto font-bold p-2'>Admin</li>    
                 </ul>
             </nav>
@@ -27,14 +36,14 @@ export const AdminPage = () => {
                     Number of Products
                 </span>
 
-                <h1 className='text-3xl'>6</h1>
+                <h1 className='text-3xl'>{!products ? '' : products.length}</h1>
             </div>
 
 
             <div className='w-1/4 flex flex-col justify-between'>
-                 <a className='jump bg-gradient-to-r from-blue-500 to-blue-300'><p className='jump-content font-muli'>Check Products</p></a>
-                 <a className='jump bg-gradient-to-r from-red-500 to-red-300 my-2'><p className='jump-content font-muli'>Check Orders</p></a>
-                 <a className='jump bg-gradient-to-r from-green-500 to-green-300 my-2'><p className='jump-content font-muli'>Add Products</p></a>
+                 <Link className='jump bg-gradient-to-r from-blue-500 to-blue-300' to='/adminproducts'><p className='jump-content font-muli'>Check Products</p></Link>
+                 <a className='jump bg-gradient-to-r from-red-500 to-red-300 mt-4 mb-2' href='#!'><p className='jump-content font-muli'>Check Orders</p></a>
+                 <a className='jump bg-gradient-to-r from-green-500 to-green-300 my-3' href='#!'><p className='jump-content font-muli'>Add Products</p></a>
              </div>
 
             </div>
@@ -43,3 +52,11 @@ export const AdminPage = () => {
         </div>
     )
 }
+
+
+export default connect((state)=>({
+    products:state.products.items
+}),
+{
+    fetchProducts
+})(AdminPage);
