@@ -19,8 +19,10 @@ class ProductPage extends Component {
             <div className='mt-8'>
               <Filter />
             </div>
-            <div>
-            <Products addToCart={this.addToCart}/>            
+            <div className='w-screen mt-16'>
+              <div className='w-5/6 ml-auto mr-auto'>
+               <Products />            
+              </div>
             </div>
 
             <div>

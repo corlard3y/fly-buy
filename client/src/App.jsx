@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import Cart from './components/Cart/Cart';
 import  AdminPage  from './Admin/AdminPage';
 import AdminProducts from './Admin/AdminProducts';
+import AdminOrders from './Admin/AdminOrders';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                     <Route path='/cart' component={Cart} />
                     <Route path='/admin' component={AdminPage} />
                     <Route path='/adminproducts' component={AdminProducts}/>
+                    <Route path='/adminorders' component={AdminOrders}/>
                 </Switch>
             </section>
       </Fragment>

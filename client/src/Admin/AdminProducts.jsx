@@ -3,6 +3,8 @@ import {fetchProducts} from '../Actions/productActions';
 import {connect} from 'react-redux';
 import formatCurrency from '../util';
 import axios from 'axios';
+import AdminNav from './AdminNav';
+import Spinner from '../components/layout/Spinner';
 
 // import Orders from '../components/Products/Orders'
  
@@ -25,18 +27,9 @@ const AdminProducts = (props) => {
     }, [])
     return (
         <div>
+            <AdminNav />
 
-            <nav className='w-full border-b border-gray-300 p-2 text-gray-600 hover:text-gray-900 '>
-                <ul className='font-nexa w-full flex flex-row'>
-                    <li className='p-2'><a href='#!'>Products</a></li>
-                    <li className='p-2'><a href='#!'>Orders</a></li>
-                    <li className='p-2'><a href='#!'> Add Products</a></li>
-                    <li className='ml-auto font-bold p-2'>Admin</li>    
-                </ul>
-            </nav>
-
-
-            {!products  ? (<div></div>) :
+            {!products  ? (<Spinner />) :
                  (  <div className='font-nexa'>
                       <div className='my-4 text-center font-bold text-xl sm:text-3xl'>
                          Products
