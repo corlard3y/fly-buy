@@ -10,7 +10,10 @@ const AdminNav = () => {
                 <Link to='/adminproducts'><li className='p-2'>Products</li></Link>
                 <Link to='/adminorders'><li className='p-2'>Orders</li></Link>
                 <Link to='/admin-form'><li className='p-2'> Add Products</li></Link>
-                    <Link to='/admin' className='ml-auto'><li className='ml-auto font-bold p-2'>Admin</li></Link>   
+
+                <Link to='/products' className='ml-auto'><li className='ml-auto font-bold p-2'>Home</li></Link> 
+                    <Link to='/admin' className=''><li className='ml-auto font-bold p-2'>Admin</li></Link> 
+
                 </ul>
             </nav>
         </div>

@@ -3,9 +3,37 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
 const path = require('path');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
+const fs = require('fs');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, './uploads/');
+  },
+  filename: function(req,file,cb){
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+
+const fileFilter = (req,file,cb) => {
+    //reject a file
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' ){
+        cb(null, true);
+    }
+    else{
+          cb(null, false);
+    }
+
+};
+const upload = multer({storage: storage, limits: {
+  fileSize: 1024 * 1024 * 5
+},
+fileFilter: fileFilter
+});
 
 const app = express();
+app.use('/uploads', express.static('uploads'))
 
 connectDB();
 
@@ -28,14 +56,15 @@ app.use(bodyParser.json());
 
 const Product = mongoose.model("products", new mongoose.Schema({
     _id:{ type:String, default: shortid.generate },
-    title: String,
-    description: String,
-    image: String,
-    price: Number,
+    title:{type:String, required:true},
+    description: {type:String, required:true},
+    image: {type: String, required: true},
+    price: {type:Number, required:true},
     availableSizes: [String],
 
 })
 );
+ 
 
 //get all products
 app.get("/api/products", async(req, res) => {
@@ -44,10 +73,18 @@ app.get("/api/products", async(req, res) => {
 });
  
 //add products
-app.post("/api/products", async(req, res) => {
-        const newProduct = new Product(req.body);
+app.post("/api/products", upload.single('file'), async(req, res) => {
+      console.log(req.file);
+        const newProduct = new Product({
+          title:req.body.title,
+          description:req.body.description,
+          price:req.body.price,
+          availableSizes:req.body.availableSizes,
+          image:req.file.path
+        });
         const savedProduct = await newProduct.save();
         res.send(savedProduct);
+        window.location.reload;
 });
 
 //delete products

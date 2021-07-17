@@ -1,49 +1,63 @@
-import React,{Fragment,useEffect,useState} from 'react'
+import React,{Fragment,useState} from 'react'
 import AdminNav from './AdminNav';
 import axios from 'axios'
+// import { useForm } from '../Hooks/useForm';
+// import { useFormik } from 'formik';
 
 
 const AdminFormProducts = (props) => {
-    // const [error, errorMessage] = useState('');
     
     const [ formData,setFormData ] = useState({
             title:'',
-            file:'',
             description:'',
             availableSizes:'',
             price:''
-    })
-    const { title, file, description, availableSizes, price } = formData;
+    });
+    
+    const { title, description, availableSizes, price } = formData;
 
     const onChange = (e) => {
        const newData = {...formData};
        newData[e.target.name] = e.target.value;
        setFormData(newData)
     }
-    useEffect(() => {
-        // props.fetchOrder();
-        // props.fetchProducts();  
-        // eslint-disable-next-line react-hooks/exhaustive-deps   
-    },[])
+    const handleFile = () => {
+    //    document.getElementById('view_model_avatar') = e.target.files[0];
+    }
+
+    // var imagefile = document.querySelector('#view_model_avatar');
+    // formData.append("image", imagefile.files[0]);
+
 
      
 
 
     const addProducts = async (e) => {
         e.preventDefault();
-      
-        await axios.post(`http://localhost:5000/api/products`,{
+        console.log({
             title: formData.title,
-            image: formData.file,
-            description: formData.description,
-            availableSizes: [formData.availableSizes],
-            price: parseFloat(formData.price)
+                description: formData.description,
+                availableSizes: [formData.availableSizes],
+                price: parseFloat(formData.price),
+                // file: file
         })
-        .then(res=>{
-            console.log(res.data);
-            // window.location.reload;
-        })
-        .catch(error=> console.error('Error:',error))
+      
+        // await axios.post(`http://localhost:5000/api/products`,{
+        //     title: formData.title,
+        //     description: formData.description,
+        //     availableSizes: [formData.availableSizes],
+        //     price: parseFloat(formData.price),
+        //     file: file
+        // },{
+        // headers:{
+        //     'Content-Type': 'multipart/form-data'
+        // }}
+        // )
+        // .then(res=>{
+        //     console.log(res.data);
+        //     // window.location.reload;
+        // })
+        // .catch(error=> console.error('Error:',error))
     }
     return (
         <Fragment>
@@ -52,25 +66,24 @@ const AdminFormProducts = (props) => {
             </div>
             
                    <div className='w-full my-8 p-2'>
-                     <form className='sm:w-1/2 w-full ml-auto  text-gray-700 mr-auto font-nexa border border-gray-200 p-8' onSubmit={(e)=>addProducts(e)}>
+                     <form className='sm:w-1/2 w-full ml-auto  text-gray-700 mr-auto font-nexa border border-gray-200 p-8' onSubmit={(e)=>addProducts(e)} encType="multipart/form-data">
                          <div className='font-bold text-center py-2'>
                              Add Products
                          </div>
                          <div>
                              <label>Title:</label><br></br>
                              <input type='text' name="title" value={title}  className='border w-full focus:outline-none py-1 rounded' onChange={(e)=>onChange(e)} required/>
-                             <span></span>
                          </div>
                          
                          
-                         <div class="my-4">
-                        <label class="mb-1 block text-sm font-medium text-gray-800" for="view_model_avatar">
+                         <div className="my-4">
+                        <label className="mb-1 block text-sm font-medium text-gray-800" for="view_model_avatar">
                         Upload a profile picture
                         </label>
-                        <div class="relative">
+                        <div className="relative">
                         <input
-                            class="border-gray-200 focus:ring-red-600 block w-full overflow-hidden cursor-pointer border text-gray-800 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent"
-                            aria-describedby="view_model_avatar_help" id="view_model_avatar" name="view_model[avatar]" onChange={(e)=>onChange(e)} value={file} type="file"
+                            className="border-gray-200 focus:ring-red-600 block w-full overflow-hidden cursor-pointer border text-gray-800 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent"
+                            aria-describedby="view_model_avatar_help" id="view_model_avatar" onChange={handleFile} name="view_model[avatar]" type="file"
                          />
                        
                         </div>

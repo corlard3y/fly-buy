@@ -35,7 +35,7 @@ const AdminPage = (props) => {
             <div className='w-full mt-4 sm:mt-0 sm:w-1/4 flex flex-col justify-between'>
                  <Link className='jump bg-gradient-to-r from-blue-500 to-blue-300' to='/adminproducts'><p className='jump-content font-muli'>Check Products</p></Link>
                  <Link className='jump bg-gradient-to-r from-red-500 to-red-300 mt-4 mb-2' to='/adminorders'><p className='jump-content font-muli'>Check Orders</p></Link>
-                 <a className='jump bg-gradient-to-r from-green-500 to-green-300 my-3' href='#!'><p className='jump-content font-muli'>Add Products</p></a>
+                 <Link className='jump bg-gradient-to-r from-green-500 to-green-300 my-3' to='/admin-form'><p className='jump-content font-muli'>Add Products</p></Link>
              </div>
 
             </div>
