@@ -10,6 +10,7 @@ import Cart from './components/Cart/Cart';
 import  AdminPage  from './Admin/AdminPage';
 import AdminProducts from './Admin/AdminProducts';
 import AdminOrders from './Admin/AdminOrders';
+import AdminFormProducts from './Admin/AdminFormProducts';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path='/admin' component={AdminPage} />
                     <Route path='/adminproducts' component={AdminProducts}/>
                     <Route path='/adminorders' component={AdminOrders}/>
+                    <Route path='/admin-form' component={AdminFormProducts} />
                 </Switch>
             </section>
       </Fragment>
