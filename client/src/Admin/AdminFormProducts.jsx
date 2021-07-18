@@ -6,7 +6,8 @@ import axios from 'axios'
 
 
 const AdminFormProducts = (props) => {
-    
+
+    const [file, setFile] = useState('');
     const [ formData,setFormData ] = useState({
             title:'',
             description:'',
@@ -19,45 +20,43 @@ const AdminFormProducts = (props) => {
     const onChange = (e) => {
        const newData = {...formData};
        newData[e.target.name] = e.target.value;
-       setFormData(newData)
-    }
-    const handleFile = () => {
-    //    document.getElementById('view_model_avatar') = e.target.files[0];
-    }
+       if(e.target.name === 'image'){
+           newData[e.target.name] = e.target.files[0];
+       }
+       setFormData(newData);
+    //    console.log(newData);
+    };
+  
 
-    // var imagefile = document.querySelector('#view_model_avatar');
-    // formData.append("image", imagefile.files[0]);
-
-
-     
 
 
     const addProducts = async (e) => {
         e.preventDefault();
-        console.log({
-            title: formData.title,
-                description: formData.description,
-                availableSizes: [formData.availableSizes],
-                price: parseFloat(formData.price),
-                // file: file
-        })
+        console.log(formData
+            // {
+            // title: formData.title,
+            //     description: formData.description,
+            //     availableSizes: [formData.availableSizes],
+            //     price: parseFloat(formData.price),
+            //     image: file
+        // }
+        )
       
-        // await axios.post(`http://localhost:5000/api/products`,{
-        //     title: formData.title,
-        //     description: formData.description,
-        //     availableSizes: [formData.availableSizes],
-        //     price: parseFloat(formData.price),
-        //     file: file
-        // },{
-        // headers:{
-        //     'Content-Type': 'multipart/form-data'
-        // }}
-        // )
-        // .then(res=>{
-        //     console.log(res.data);
-        //     // window.location.reload;
-        // })
-        // .catch(error=> console.error('Error:',error))
+        await axios.post(`http://localhost:5000/api/products`,formData
+        // {
+            // title: formData.title,
+            // description: formData.description,
+            // availableSizes: [formData.availableSizes],
+            // price: parseFloat(formData.price),
+            // image: formData.image
+        // }
+        )
+        .then(res=>{
+            console.log(res.data);
+            alert('success');
+            // window.location.reload;
+        })
+        .catch(error=> console.error('Error:',error))
     }
     return (
         <Fragment>
@@ -66,7 +65,7 @@ const AdminFormProducts = (props) => {
             </div>
             
                    <div className='w-full my-8 p-2'>
-                     <form className='sm:w-1/2 w-full ml-auto  text-gray-700 mr-auto font-nexa border border-gray-200 p-8' onSubmit={(e)=>addProducts(e)} encType="multipart/form-data">
+                     <form className='sm:w-1/2 w-full ml-auto  text-gray-700 mr-auto font-nexa border border-gray-200 p-8' onSubmit={(e)=>addProducts(e)} encType='multipart/form-data'>
                          <div className='font-bold text-center py-2'>
                              Add Products
                          </div>
@@ -77,17 +76,16 @@ const AdminFormProducts = (props) => {
                          
                          
                          <div className="my-4">
-                        <label className="mb-1 block text-sm font-medium text-gray-800" for="view_model_avatar">
+                        <label className="mb-1 block text-sm font-medium text-gray-800" htmlFor="view_model_avatar">
                         Upload a profile picture
                         </label>
-                        <div className="relative">
+                        <div className="relative flex flex-row">
                         <input
                             className="border-gray-200 focus:ring-red-600 block w-full overflow-hidden cursor-pointer border text-gray-800 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent"
-                            aria-describedby="view_model_avatar_help" id="view_model_avatar" onChange={handleFile} name="view_model[avatar]" type="file"
+                            aria-describedby="view_model_avatar_help" id="view_model_avatar" onChange={(e)=>onChange(e)} name="image" type="file"
                          />
-                       
                         </div>
-                        <div class="mt-1 text-sm text-gray-500" id="view_model_avatar_help">
+                        <div className="mt-1 text-sm text-gray-500" id="view_model_avatar_help">
                         Image size must be less than 10MB
                         </div>
                     </div>

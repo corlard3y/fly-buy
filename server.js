@@ -58,7 +58,7 @@ const Product = mongoose.model("products", new mongoose.Schema({
     _id:{ type:String, default: shortid.generate },
     title:{type:String, required:true},
     description: {type:String, required:true},
-    image: {type: String, required: true},
+    image: {type: String,required:true},
     price: {type:Number, required:true},
     availableSizes: [String],
 
@@ -73,18 +73,20 @@ app.get("/api/products", async(req, res) => {
 });
  
 //add products
-app.post("/api/products", upload.single('file'), async(req, res) => {
-      console.log(req.file);
-        const newProduct = new Product({
-          title:req.body.title,
-          description:req.body.description,
-          price:req.body.price,
-          availableSizes:req.body.availableSizes,
-          image:req.file.path
-        });
+app.post("/api/products", upload.single('image'), async(req, res) => {
+      console.log(req.file.path);
+          const newProduct = new Product(
+            {
+            title:req.body.title,
+            description:req.body.description,
+            price:req.body.price,
+            availableSizes:req.body.availableSizes,
+            image:req.file.path
+          }
+          );
         const savedProduct = await newProduct.save();
         res.send(savedProduct);
-        window.location.reload;
+        // window.location.reload
 });
 
 //delete products
